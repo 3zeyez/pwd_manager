@@ -50,7 +50,7 @@ def add_to_file():
             if is_pwd_rand:
                 data = {'domain': domain, 'pwd': create_pwd_randomly()}
             else:
-                data = {'domain': domain, 'pwd': create_pwd()}
+                data = {'domain': domain, 'pwd': create_pwd_manually()}
 
             # load data to the file
             dump(data, f)
@@ -234,7 +234,7 @@ def update():
                 if pwd_rand:
                     newpwd = create_pwd_randomly()
                 else:
-                    newpwd = create_pwd()
+                    newpwd = create_pwd_manually()
 
                 while True:
                     try:
@@ -265,7 +265,7 @@ def update():
                 if pwd_rand:
                     newpwd = create_pwd_randomly()
                 else:
-                    newpwd = create_pwd()
+                    newpwd = create_pwd_manually()
 
                 while True:
                     try:
