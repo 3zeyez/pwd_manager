@@ -280,29 +280,22 @@ def update():
 # supprimer un domaine - delete domain
 # noinspection PyBroadException
 def delete():
-    _file_name = get_file_name()
+    file_name = get_file_name() + '.pwd'
 
     try:
-        with open(_file_name + '.pwd', 'rb') as f:
+        with open(file_name, 'rb') as f:
             counter = 0
-            while True:
-                try:
-                    load(f)
-                    # del data
-                    counter += 1
-                    if counter == 1:
-                        break
-                except EOFError:
-                    break
-
-            if counter == 0:
-                print("File is empty!")
-                raise Exception
+            try:
+                load(f)
+                counter += 1
+            except EOFError:
+                if counter == 0:
+                    raise Exception
 
             domain = get_domain()
 
             # check if the domain exist or not
-            while not domain_exists_in_file(domain, _file_name):
+            while not domain_exists_in_file(domain, file_name):
                 print("This domain does not exist!")
                 domain = get_domain()
 
@@ -316,7 +309,7 @@ def delete():
                 except EOFError:
                     break
 
-        with open(_file_name + '.pwd', 'wb') as f:
+        with open(file_name, 'wb') as f:
             for data in tab:
                 dump(data, f)
 
@@ -325,7 +318,7 @@ def delete():
         print('Please enter a valid file name!')
         delete()
     except Exception:
-        delete()
+        print("File is empty! You can do this operation!")
 
 
 # remove file - supprimer le fichier
