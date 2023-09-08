@@ -1,5 +1,5 @@
 from pickle import dump, load
-from pwd import *
+from ppwd import *
 # noinspection PyUnresolvedReferences
 from prettytable import PrettyTable
 from os import remove
@@ -145,7 +145,7 @@ def search():
                         print("No result found")
                     else:
                         print_file(tab)
-                        break
+                    break
     except FileNotFoundError:
         print("Invalid file name!")
         search()
