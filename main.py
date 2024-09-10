@@ -42,7 +42,7 @@ def console_log():
 
 
 # the main program of our software
-def main():
+def main(**args):
     console_log()
     mode = '0'
     while mode not in ['q', 'Q', 'quit']:
